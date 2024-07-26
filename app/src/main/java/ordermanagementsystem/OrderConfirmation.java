@@ -8,7 +8,7 @@ import java.awt.Font;
 
 public class OrderConfirmation extends JFrame implements ActionListener{
 
-    private final int WIDTH = 480, HEIGHT = 800;
+    private final int WIDTH = 600, HEIGHT = 800;
     private JLabel l1, l2;
     private JButton bConfirm, bGoBack;
     private int width;
@@ -51,12 +51,12 @@ public class OrderConfirmation extends JFrame implements ActionListener{
         add(l2);
 
         bConfirm = new JButton("Confirm");
-        bConfirm.setBounds(80, 680, 150, 50);
+        bConfirm.setBounds(140 + 20 + 150, 680, 150, 50);
         bConfirm.addActionListener(this); 
         add(bConfirm);
 
         bGoBack = new JButton("Go back");
-        bGoBack.setBounds(80 + 150 + 10, 680,150, 50);
+        bGoBack.setBounds(140, 680, 150, 50);
         bGoBack.addActionListener(this); 
         add(bGoBack);
 
@@ -96,10 +96,16 @@ public class OrderConfirmation extends JFrame implements ActionListener{
     }
 
     private void confirmOrder(){
+        if(Menu.currentOrder.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No items in the order!");
+            this.dispose();
+            new Menu();
+        }
         recordOrder();
         Menu.currentOrder.clear();
         Menu.currentOrderPrice = 0;
-        setVisible(false);
+        JOptionPane.showMessageDialog(null, "Order placed!");
+        this.dispose();
         new Menu();
     }
 
@@ -121,6 +127,5 @@ public class OrderConfirmation extends JFrame implements ActionListener{
 
     private int calculateWidth(JLabel label){
         return label.getFontMetrics(label.getFont()).stringWidth(label.getText());
-    }
-    
+    }  
 }

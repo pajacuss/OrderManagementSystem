@@ -71,7 +71,7 @@ public class ButtonProgrammer extends JFrame implements ActionListener{
         if(e.getSource() == bAdd){
             addItem();
         }else if(e.getSource() == bStop){
-            setVisible(false);
+            this.dispose();
             new Menu();
         }
     }
@@ -97,7 +97,7 @@ public class ButtonProgrammer extends JFrame implements ActionListener{
         count++;
         if(count == 24){
             JOptionPane.showMessageDialog(null, "Maximum capacity of items reached");
-            setVisible(false);
+            this.dispose();
             new Menu();
         }
         lName.setText("Enter name of item no."+count+" :");

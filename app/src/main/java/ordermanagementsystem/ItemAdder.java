@@ -10,7 +10,7 @@ public class ItemAdder extends JFrame implements ActionListener{
     private final int WIDTH = 480, HEIGHT = 600;
     private JLabel lName, lPrice, lAmount;
     private JTextField tfNumberOf;
-    private JButton bAdd;
+    private JButton bAdd, bBack;
     private int width;
     private Font cFont = new Font("Arial", Font.BOLD, 40), inputFont = new Font("SansSerif",Font.PLAIN, 24);
     private float price;
@@ -52,9 +52,15 @@ public class ItemAdder extends JFrame implements ActionListener{
 
         bAdd = new JButton("Add position");
         bAdd.setFont(cFont.deriveFont(16F));
-        bAdd.setBounds(WIDTH/2 - 150/2, 340, 150, 30);
+        bAdd.setBounds(WIDTH/2 - 150/2, 340, 150, 50);
         add(bAdd);
         bAdd.addActionListener(this);
+
+        bBack = new JButton("Go Back");
+        bBack.setFont(cFont.deriveFont(16F));
+        bBack.setBounds(WIDTH/2 - 150/2, 400, 150, 50);
+        add(bBack);
+        bBack.addActionListener(this);
 
         setVisible(true);
     }
@@ -63,6 +69,7 @@ public class ItemAdder extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == bAdd){
             addItem();
+        }else if(e.getSource() == bBack){
             this.dispose();
             new Menu();
         }
@@ -89,7 +96,7 @@ public class ItemAdder extends JFrame implements ActionListener{
         int amount = Integer.parseInt(tfNumberOf.getText());
         Menu.currentOrder.put(name, amount );
         Menu.currentOrderPrice += price * amount;
-    }
-    public static void main(String[] args) {
+        this.dispose();
+        new Menu();
     }
 }

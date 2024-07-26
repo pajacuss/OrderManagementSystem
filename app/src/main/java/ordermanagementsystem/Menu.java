@@ -13,7 +13,7 @@ import java.sql.*;
 
 public class Menu extends JFrame implements ActionListener{
     private final int WIDTH = 1280, HEIGHT = 860;
-    private JButton bConfirm, bProgram, bHistory;
+    private JButton bConfirm, bProgram, bHistory, bClearOrder;
     private JLabel lWelcome, lCurrentOrder;
     public static Map<String, Integer> currentOrder = new LinkedHashMap<>(); //name, amount
     public static float currentOrderPrice = 0;
@@ -93,6 +93,11 @@ public class Menu extends JFrame implements ActionListener{
         bHistory.addActionListener(this); 
         add(bHistory);
 
+        bClearOrder = new JButton("Clear order");
+        bClearOrder.setBounds(940,600,150,150);
+        bClearOrder.addActionListener(this); 
+        add(bClearOrder);
+
 
         setVisible(true);
     }
@@ -100,14 +105,16 @@ public class Menu extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == bProgram){
-            setVisible(false);
+            this.dispose();
             new ConfirmPage();
         }else if(e.getSource() == bConfirm){
-            setVisible(false);
+            this.dispose();
             new OrderConfirmation();
         }else if(e.getSource() == bHistory){
-            setVisible(false);
+            this.dispose();
             new OrderHistory();
+        }else if(e.getSource() == bClearOrder){
+            clearOrderHandle();
         }
     }
 
@@ -128,6 +135,14 @@ public class Menu extends JFrame implements ActionListener{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void clearOrderHandle(){
+        Menu.currentOrder.clear();
+        Menu.currentOrderPrice = 0F;
+        JOptionPane.showMessageDialog(null, "Order cleared");
+        this.dispose();
+        new Menu();
     }
 
     private int calculateWidth(JLabel label){

@@ -40,12 +40,12 @@ public class ConfirmPage extends JFrame implements ActionListener{
         add(l2);
 
         b1 = new JButton("Confirm");
-        b1.setBounds(225,350,150,60);
+        b1.setBounds(150,400,300,80);
         b1.addActionListener(this); 
         add(b1);
 
         b2 = new JButton("Go back");
-        b2.setBounds(225,450,150,60);
+        b2.setBounds(150,500,300,80);
         b2.addActionListener(this); 
         add(b2);
 
@@ -55,10 +55,10 @@ public class ConfirmPage extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == b1){
-            setVisible(false);
+            this.dispose();
             new ButtonProgrammer();
         }else if(e.getSource() == b2){
-            setVisible(false);
+            this.dispose();
             new Menu();
         }
     }
