@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.awt.Font;
 import java.sql.*;
 
-
 public class Menu extends JFrame implements ActionListener{
     private final int WIDTH = 1280, HEIGHT = 860;
     private JButton bConfirm, bProgram, bHistory, bClearOrder;
@@ -78,22 +77,22 @@ public class Menu extends JFrame implements ActionListener{
             }
         }
         
-        bProgram = new JButton("Set menu positions");
+        bProgram = new JButton("Set Menu Positions");
         bProgram.setBounds(340,600,150,150);
         bProgram.addActionListener(this); 
         add(bProgram);
 
-        bConfirm = new JButton("Confirm order");
+        bConfirm = new JButton("Confirm Order");
         bConfirm.setBounds(540,600,150,150);
         bConfirm.addActionListener(this); 
         add(bConfirm);
 
-        bHistory = new JButton("Order history");
+        bHistory = new JButton("Order History");
         bHistory.setBounds(740,600,150,150);
         bHistory.addActionListener(this); 
         add(bHistory);
 
-        bClearOrder = new JButton("Clear order");
+        bClearOrder = new JButton("Clear Order");
         bClearOrder.setBounds(940,600,150,150);
         bClearOrder.addActionListener(this); 
         add(bClearOrder);
@@ -105,8 +104,7 @@ public class Menu extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == bProgram){
-            this.dispose();
-            new ConfirmPage();
+            programHandle();
         }else if(e.getSource() == bConfirm){
             this.dispose();
             new OrderConfirmation();
@@ -128,7 +126,7 @@ public class Menu extends JFrame implements ActionListener{
             }
             if(positions.size() == 0){
                 for(int j = 1; j <= 24; j++){
-                    positions.add("Button " + j);
+                    positions.add("Item " + j);
                 }
             }
             rs.close();
@@ -143,6 +141,16 @@ public class Menu extends JFrame implements ActionListener{
         JOptionPane.showMessageDialog(null, "Order cleared");
         this.dispose();
         new Menu();
+    }
+
+    private void programHandle(){
+        if(positions.get(0).equals("Item 1")){
+            this.dispose();
+            new ButtonProgrammer();
+        }else{
+            this.dispose();
+            new ConfirmPage();
+        }
     }
 
     private int calculateWidth(JLabel label){
@@ -167,4 +175,3 @@ public class Menu extends JFrame implements ActionListener{
        new Menu();
     }
 }
-

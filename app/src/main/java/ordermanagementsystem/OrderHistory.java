@@ -35,13 +35,18 @@ public class OrderHistory extends JFrame implements ActionListener{
         int currentY = 100;
         if(!orderHistoryList.isEmpty()){
             for(int i = orderHistoryList.size() - 1; i>=0; i--){
-                JLabel label = new JLabel("<html>" + orderHistoryList.get(i) + "</html>");
+                JLabel label = new JLabel();
+                label.setText("<html>"+orderHistoryList.get(i) + "</html>");
                 label.setFont(cFont);
                 width = calculateWidth(label);
-                label.setBounds(20, currentY, width, 30);
+                int height = 30;
+                if(width > WIDTH){
+                    height = 60;
+                }
+                label.setBounds(20, currentY, width, height);
                 add(label);
-                currentY += 30;
-                if(currentY == 700){
+                currentY += height;
+                if(currentY > 700){
                     break;
                 }   
             }
