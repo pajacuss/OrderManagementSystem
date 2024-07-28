@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
+import java.awt.Color;
+import java.awt.Image;
 
 public class OrderHistory extends JFrame implements ActionListener{
     
@@ -17,6 +19,7 @@ public class OrderHistory extends JFrame implements ActionListener{
     private List<String> orderHistoryList;
 
     public OrderHistory(){
+        getContentPane().setBackground(Color.LIGHT_GRAY);
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -25,6 +28,10 @@ public class OrderHistory extends JFrame implements ActionListener{
         setLayout(null);
 
         getOrderHistory();
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/OMlogo.png"));
+        Image image = icon.getImage();
+        setIconImage(image);
 
         lWelcome = new JLabel("Order history");
         lWelcome.setFont(wFont);

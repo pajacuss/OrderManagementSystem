@@ -5,6 +5,8 @@ import java.sql.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
+import java.awt.Color;
+import java.awt.Image;
 
 public class OrderConfirmation extends JFrame implements ActionListener{
 
@@ -15,12 +17,17 @@ public class OrderConfirmation extends JFrame implements ActionListener{
     private Font wFont = new Font("Arial",Font.BOLD,50), cFont = new Font("SansSerif",Font.PLAIN, 24);
 
     public OrderConfirmation(){
+        getContentPane().setBackground(Color.LIGHT_GRAY);
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("Order Confirmation");
         setResizable(false);
         setLayout(null);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/OMlogo.png"));
+        Image image = icon.getImage();
+        setIconImage(image);
 
         l1 = new JLabel("Confirm order");
         l1.setFont(wFont);

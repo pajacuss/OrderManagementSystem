@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.awt.Font;
 import java.sql.*;
-
+import java.awt.Color;
+import java.awt.Image;
 public class Menu extends JFrame implements ActionListener{
     private final int WIDTH = 1280, HEIGHT = 860;
     private JButton bConfirm, bProgram, bHistory, bClearOrder;
@@ -24,9 +25,14 @@ public class Menu extends JFrame implements ActionListener{
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
         setTitle("Order Managment System");
         setResizable(false);
         setLayout(null);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/OMlogo.png"));
+        Image image = icon.getImage();
+        setIconImage(image);
 
         lWelcome = new JLabel("Order Management System");
         lWelcome.setFont(cFont);
@@ -46,13 +52,11 @@ public class Menu extends JFrame implements ActionListener{
             button.setBounds(currentX, currentY, 140, 140);
             currentX += 150;
             button.addActionListener(new ActionListener() {
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     setVisible(false);
                     new ItemAdder(name);
                 }
-                
             });
             add(button);
         }

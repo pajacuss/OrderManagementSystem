@@ -3,8 +3,9 @@ import javax.swing.*;
 import java.sql.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.awt.Font;
+import java.awt.Color;
+import java.awt.Image;
 
 public class ItemAdder extends JFrame implements ActionListener{
     private final int WIDTH = 480, HEIGHT = 600;
@@ -18,6 +19,7 @@ public class ItemAdder extends JFrame implements ActionListener{
 
     public ItemAdder(String name){
         this.name = name;
+        getContentPane().setBackground(Color.LIGHT_GRAY);
         setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,6 +28,10 @@ public class ItemAdder extends JFrame implements ActionListener{
         setLayout(null);
 
         getPrice(name);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/OMlogo.png"));
+        Image image = icon.getImage();
+        setIconImage(image);
 
         lName = new JLabel("Add " + name);
         lName.setFont(cFont);

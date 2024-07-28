@@ -7,7 +7,7 @@ public class Conn {
     public Statement statement;
     private String connectionString = "jdbc:mysql://localhost:3306/restaurantmanagement";
     private String username = "root";
-    private String password = "root1234";
+    private String password = "root123";
     
     public Conn(){
         try {

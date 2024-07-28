@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 
 public class ConfirmPage extends JFrame implements ActionListener{
     
@@ -16,6 +17,7 @@ public class ConfirmPage extends JFrame implements ActionListener{
     private int width;
 
     public ConfirmPage(){
+        getContentPane().setBackground(Color.LIGHT_GRAY);
         setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
         setTitle("Menu Position Configuration");
@@ -23,6 +25,9 @@ public class ConfirmPage extends JFrame implements ActionListener{
         setResizable(false);
         setLayout(null);
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/OMlogo.png"));
+        Image image = icon.getImage();
+        setIconImage(image);
 
         String s1 = "Your current menu items will be forgotten!";
         l1 = new JLabel();

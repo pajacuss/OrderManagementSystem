@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import java.awt.Font;
+import java.awt.Color;
+import java.awt.Image;
 
 public class ButtonProgrammer extends JFrame implements ActionListener{
 
@@ -18,12 +20,17 @@ public class ButtonProgrammer extends JFrame implements ActionListener{
 
     public ButtonProgrammer(){
         clearTable();
+        getContentPane().setBackground(Color.LIGHT_GRAY);
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("Menu Position Configuration");
         setResizable(false);
         setLayout(null);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/OMlogo.png"));
+        Image image = icon.getImage();
+        setIconImage(image);
         
         lWelcome = new JLabel("Add your menu positions");
         lWelcome.setFont(cFont);
