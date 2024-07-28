@@ -23,6 +23,8 @@ Order Management System project is a Java application simulating the ones used i
 
 ## Database
 If you want to ensure your project is working properly I suggest you make a mySQL database similar to this one:
+
+
 ![OMdatabase](https://github.com/user-attachments/assets/011b82a9-766a-4991-a3e3-a2dde5fc4b4e)
 
 ,where:
